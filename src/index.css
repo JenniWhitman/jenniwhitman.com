@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+    --background: #fdf6e3;
+    --text: #2e2a2a;
+    --primary: #d97706;
+    --secondary: #7c6f64;
+    --accent: #d33682;
+    --muted: #e5e5e5;
+
+    --font-display: 'DM Serif Display', serif;
+    --font-body: 'Fira Code', monospace;
+}
+
+.dark {
+    --background: #1a1a1a;
+    --text: #f4f4f4;
+    --primary: #f59e0b;
+    --secondary: #a8a29e;
+    --accent: #ec4899;
+    --muted: #2d2d2d;
+}
+
+html {
+    font-size: 16px; /* base for md/lg screens */
+}
+
+@media (max-width: 640px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 14px;
+    }
+}
