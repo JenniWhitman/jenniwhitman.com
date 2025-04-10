@@ -2,7 +2,7 @@ import ResumeSection from './ResumeSection'
 
 const HomeSection = () => {
   return (
-    <ResumeSection>
+    <ResumeSection title="Summary">
       <p>
         Results-driven Software Engineer with a passion for continuous learning,
         collaboration, and building impactful solutions. Experienced in diverse

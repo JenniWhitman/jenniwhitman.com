@@ -1,0 +1,179 @@
+/* Base styles shared by all themes */
+:root {
+    --primary: #000;
+    --secondary: #666;
+    --background: #fff;
+    --text: #000;
+    --muted: #ccc;
+    --accent: #f43f5e;
+    --font-display: var(--font-sans);
+    --font-body: var(--font-sans);
+}
+
+/* Light Theme */
+.light {
+    --font-display: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --primary: #111;
+    --secondary: #666;
+    --background: #fafafa;
+    --text: #111;
+    --muted: #ddd;
+    --accent: #4f46e5;
+}
+
+/* Dark Theme */
+.dark {
+    --font-display: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --primary: #fafafa;
+    --secondary: #999;
+    --background: #111;
+    --text: #fafafa;
+    --muted: #333;
+    --accent: #f43f5e;
+}
+
+/* Monochrome Theme */
+.monochrome {
+    --font-display: 'Source Code Pro', monospace;
+    --font-body: 'Source Code Pro', monospace;
+    --primary: #000;
+    --secondary: #555;
+    --background: #fff;
+    --text: #000;
+    --muted: #ddd;
+    --accent: #000;
+}
+
+/* Brutalist Theme */
+.brutalist {
+    --font-display: 'Impact', sans-serif;
+    --font-body: 'Arial', sans-serif;
+    --primary: #f00;
+    --secondary: #000;
+    --background: #ff0;
+    --text: #000;
+    --muted: #000;
+    --accent: #00f;
+}
+
+/* Pastel Theme */
+.pastel {
+    --font-display: 'Quicksand', sans-serif;
+    --font-body: 'Nunito', sans-serif;
+    --primary: #ffb3c1;
+    --secondary: #b0aac0;
+    --background: #fef6e4;
+    --text: #5c5c5c;
+    --muted: #e3d5ca;
+    --accent: #9ad0c2;
+}
+
+/* Cyber Theme */
+.cyber {
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Audiowide', cursive;
+    --primary: #0ff;
+    --secondary: #0f0;
+    --background: #000;
+    --text: #0ff;
+    --muted: #111;
+    --accent: #f0f;
+}
+
+/* Handdrawn Theme */
+.handdrawn {
+    --font-display: 'Patrick Hand', cursive;
+    --font-body: 'Indie Flower', cursive;
+    --primary: #2b2b2b;
+    --secondary: #7b7b7b;
+    --background: #faf4e1;
+    --text: #2b2b2b;
+    --muted: #d0cfcf;
+    --accent: #ff6f61;
+}
+
+/* Natural Theme */
+.natural {
+    --font-display: 'Lora', serif;
+    --font-body: 'Merriweather', serif;
+    --primary: #386641;
+    --secondary: #6a994e;
+    --background: #f2e8cf;
+    --text: #1b4332;
+    --muted: #a7c957;
+    --accent: #bc4749;
+}
+
+/* Hacker Theme */
+.hacker {
+    --font-display: 'VT323', monospace;
+    --font-body: 'Source Code Pro', monospace;
+    --primary: #0f0;
+    --secondary: #080;
+    --background: #000;
+    --text: #0f0;
+    --muted: #030;
+    --accent: #0ff;
+}
+
+/* Lisafrank Theme */
+.lisafrank {
+    --font-display: 'Comic Neue', cursive;
+    --font-body: 'Fredoka', sans-serif;
+    --primary: #ff69b4;
+    --secondary: #ff1493;
+    --background: #ffff00;
+    --text: #ff69b4;
+    --muted: #ffa500;
+    --accent: #8a2be2;
+}
+
+/* Windows95 Theme */
+.windows95 {
+    --font-display: 'Tahoma', sans-serif;
+    --font-body: 'Arial', sans-serif;
+    --primary: #000080;
+    --secondary: #808080;
+    --background: #c0c0c0;
+    --text: #000;
+    --muted: #a9a9a9;
+    --accent: #008080;
+}
+
+/* Vintage Theme */
+.vintage {
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Libre Baskerville', serif;
+    --primary: #704214;
+    --secondary: #c2b280;
+    --background: #f5f5dc;
+    --text: #5b3921;
+    --muted: #d2b48c;
+    --accent: #8b0000;
+}
+
+/* Minimalist Theme */
+.minimalist {
+    --font-display: 'Inter', sans-serif;
+    --font-body: 'Helvetica', sans-serif;
+    --primary: #000;
+    --secondary: #444;
+    --background: #fff;
+    --text: #000;
+    --muted: #ddd;
+    --accent: #777;
+}
+
+/* Neon Theme */
+.neon {
+    --font-display: 'Exo', sans-serif;
+    --font-body: 'Orbitron', sans-serif;
+    --primary: #39ff14;
+    --secondary: #ff073a;
+    --background: #000;
+    --text: #39ff14;
+    --muted: #ff073a;
+    --accent: #00ffff;
+}

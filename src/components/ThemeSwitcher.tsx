@@ -14,7 +14,7 @@ const themes = [
   { id: 'natural', label: 'Natural', icon: '🌳' },
   { id: 'hacker', label: 'Hacker', icon: '💻' },
   { id: 'lisafrank', label: 'Lisa Frank', icon: '🦄' },
-  { id: 'windows95', label: 'Windows 95', icon: '💾' },
+  { id: 'windows95', label: 'Win95', icon: '💾' },
   { id: 'vintage', label: 'Vintage', icon: '📜' },
   { id: 'minimalist', label: 'Minimal', icon: '🪴' },
   { id: 'neon', label: 'Neon', icon: '🌈' },
