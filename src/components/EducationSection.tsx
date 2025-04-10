@@ -1,9 +1,11 @@
 import React from 'react'
-import ResumeSection from "./ResumeSection"
+import ResumeSection from './ResumeSection'
 
 interface EducationProps {
   title: string
-  children: React.ReactElement<EducationListItemProps> | React.ReactElement<EducationListItemProps>[]
+  children:
+    | React.ReactElement<EducationListItemProps>
+    | React.ReactElement<EducationListItemProps>[]
 }
 
 interface EducationListItemProps {
@@ -13,7 +15,12 @@ interface EducationListItemProps {
   summary?: string
 }
 
-export const EducationListItem: React.FC<EducationListItemProps> = ({ institution, degree, duration, summary }) => {
+export const EducationListItem: React.FC<EducationListItemProps> = ({
+  institution,
+  degree,
+  duration,
+  summary,
+}) => {
   return (
     <li>
       <strong>{institution}</strong> - {degree} ({duration})
@@ -26,9 +33,12 @@ const EducationList: React.FC<EducationProps> = ({ title, children }) => {
   return (
     <ResumeSection title={title}>
       <ul>
-        {React.Children.map(children, (child: React.ReactElement<EducationListItemProps>) => (
-          <EducationListItem {...child.props} />
-        ))}
+        {React.Children.map(
+          children,
+          (child: React.ReactElement<EducationListItemProps>) => (
+            <EducationListItem {...child.props} />
+          )
+        )}
       </ul>
     </ResumeSection>
   )
@@ -37,7 +47,11 @@ const EducationList: React.FC<EducationProps> = ({ title, children }) => {
 const EducationSection = () => {
   return (
     <EducationList title={'Education'}>
-      <EducationListItem duration={'2016'} degree={'Bachelors cum laude, Computer Science'} institution={'Harvard University Extension School'} />
+      <EducationListItem
+        duration={'2016'}
+        degree={'Bachelors cum laude, Computer Science'}
+        institution={'Harvard University Extension School'}
+      />
     </EducationList>
   )
 }

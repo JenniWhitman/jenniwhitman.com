@@ -1,9 +1,11 @@
 import React from 'react'
-import ResumeSection from "./ResumeSection"
+import ResumeSection from './ResumeSection'
 
 interface SkillsProps {
   title: string
-  children: React.ReactElement<SkillsItemProps>[] | React.ReactElement<SkillsItemProps>
+  children:
+    | React.ReactElement<SkillsItemProps>[]
+    | React.ReactElement<SkillsItemProps>
 }
 
 interface SkillsItemProps {
@@ -12,10 +14,15 @@ interface SkillsItemProps {
   addtlInfo?: string
 }
 
-export const SkillsItem: React.FC<SkillsItemProps> = ({ title, proficiencyLevel, addtlInfo }) => {
+export const SkillsItem: React.FC<SkillsItemProps> = ({
+  title,
+  proficiencyLevel,
+  addtlInfo,
+}) => {
   return (
     <li>
-      <strong>{title}</strong> - Proficiency Level: {proficiencyLevel} - Additional Info: {addtlInfo}
+      <strong>{title}</strong> - Proficiency Level: {proficiencyLevel} -
+      Additional Info: {addtlInfo}
     </li>
   )
 }
@@ -23,8 +30,14 @@ export const SkillsItem: React.FC<SkillsItemProps> = ({ title, proficiencyLevel,
 const SkillsList: React.FC<SkillsProps> = ({ title, children }) => {
   return (
     <ResumeSection title={title}>
-      <ul>{React.Children.map(children,
-        (child: React.ReactElement<SkillsItemProps>) => <SkillsItem {...child.props} />)}</ul>
+      <ul>
+        {React.Children.map(
+          children,
+          (child: React.ReactElement<SkillsItemProps>) => (
+            <SkillsItem {...child.props} />
+          )
+        )}
+      </ul>
     </ResumeSection>
   )
 }

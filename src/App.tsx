@@ -1,37 +1,32 @@
-import React, { useState, useEffect, StrictMode } from 'react'
+import React, { useState, StrictMode } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sun, Moon } from 'lucide-react'
 import HomeSection from './components/HomeSection'
 import SkillsSection from './components/SkillsSection'
 import ExperienceSection from './components/ExperienceSection'
 import EducationSection from './components/EducationSection'
 import OtherExperienceSection from './components/OtherExperienceSection'
+import ThemeSwitcher from './components/ThemeSwitcher'
 
 const App: React.FC = () => {
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-  const [activePage, setActivePage] = useState<'home' | 'resume' | 'skills' | 'experience' | 'education' | 'otherExperience'>('home');
-
-  useEffect(() => {
-    const className = 'dark';
-    const bodyClass = window.document.documentElement.classList;
-
-    if (darkMode) {
-      bodyClass.add(className);
-    } else {
-      bodyClass.remove(className);
-    }
-  }, [darkMode]);
+  const [activePage, setActivePage] = useState<
+    | 'home'
+    | 'resume'
+    | 'skills'
+    | 'experience'
+    | 'education'
+    | 'otherExperience'
+  >('home')
 
   const pageComponents: Record<typeof activePage, React.ReactElement | null> = {
-    home: <HomeSection key='home' />,
-    skills: <SkillsSection key='skills' />,
-    experience: <ExperienceSection key='experience' />,
-    education: <EducationSection key='education' />,
-    otherExperience: <OtherExperienceSection key='otherExperience' />,
+    home: <HomeSection key="home" />,
+    skills: <SkillsSection key="skills" />,
+    experience: <ExperienceSection key="experience" />,
+    education: <EducationSection key="education" />,
+    otherExperience: <OtherExperienceSection key="otherExperience" />,
     resume: null,
-  };
+  }
 
-  const activeComponent = pageComponents[activePage] || null;
+  const activeComponent = pageComponents[activePage] || null
 
   return (
     <StrictMode>
@@ -42,39 +37,52 @@ const App: React.FC = () => {
         exit={{ opacity: 0 }}
       >
         <header className="flex items-center justify-between p-6 border-b border-[var(--muted)]">
-          <h1 className="text-2xl font-bold font-[var(--font-display)]">Jenni Whitman</h1>
+          <h1 className="text-2xl font-[var(--font-display)]">Jenni Whitman</h1>
           <nav className="flex gap-4 text-sm">
-            <button onClick={() => setActivePage('home')} className="hover:underline">Home</button>
-            <button onClick={() => setActivePage('skills')} className="hover:underline">Skills</button>
-            <button onClick={() => setActivePage('experience')} className="hover:underline">Experience</button>
-            <button onClick={() => setActivePage('education')} className="hover:underline">Education</button>
-            <button onClick={() => setActivePage('otherExperience')} className="hover:underline">Other Experience</button>
+            <button
+              onClick={() => setActivePage('home')}
+              className="hover:underline"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => setActivePage('skills')}
+              className="hover:underline"
+            >
+              Skills
+            </button>
+            <button
+              onClick={() => setActivePage('experience')}
+              className="hover:underline"
+            >
+              Experience
+            </button>
+            <button
+              onClick={() => setActivePage('education')}
+              className="hover:underline"
+            >
+              Education
+            </button>
+            <button
+              onClick={() => setActivePage('otherExperience')}
+              className="hover:underline"
+            >
+              Other Experience
+            </button>
           </nav>
-          <motion.button
-            onClick={() => setDarkMode(!darkMode)}
-            className="px-3 py-1 rounded border border-[var(--secondary)] hover:bg-[var(--muted)] transition-all duration-300 flex items-center gap-2"
-            whileTap={{ scale: 0.95 }}
-            aria-label="Toggle dark mode"
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={darkMode ? 'sun' : 'moon'}
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-              </motion.span>
-            </AnimatePresence>
-          </motion.button>
+          <ThemeSwitcher />
         </header>
 
         <main className="p-6 max-w-3xl mx-auto">
           <AnimatePresence mode="wait">
-              <motion.div key={activePage} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                { activeComponent }
-              </motion.div>
+            <motion.div
+              key={activePage}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              {activeComponent}
+            </motion.div>
           </AnimatePresence>
         </main>
 
@@ -83,7 +91,7 @@ const App: React.FC = () => {
         </footer>
       </motion.div>
     </StrictMode>
-  );
-};
+  )
+}
 
-export default App;
+export default App

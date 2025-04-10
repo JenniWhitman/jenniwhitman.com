@@ -3,11 +3,11 @@
     "jsx": "react-jsx",
     "module": "ESNext",
     "target": "ES2022",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

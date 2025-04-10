@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { ArrowUp } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react'
+import { ArrowUp } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const ScrollToTopButton = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setShow(window.scrollY > 300);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+      setShow(window.scrollY > 300)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <AnimatePresence>
@@ -29,7 +29,7 @@ const ScrollToTopButton = () => {
         </motion.button>
       )}
     </AnimatePresence>
-  );
-};
+  )
+}
 
-export default ScrollToTopButton;
+export default ScrollToTopButton

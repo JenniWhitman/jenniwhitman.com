@@ -1,38 +1,38 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Download } from 'lucide-react';
-import ResumeSection from './ResumeSection';
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronDown, Download } from 'lucide-react'
+import ResumeSection from './ResumeSection'
 
 export type Job = {
-  title: string;
-  company: string;
-  range: string;
-  summary: string;
-  details: string[];
+  title: string
+  company: string
+  range: string
+  summary: string
+  details: string[]
 }
 
 type WorkSectionProps = {
-  title: string;
-  jobs: Job[];
-};
+  title: string
+  jobs: Job[]
+}
 
-const WorkSection = ({title, jobs}: WorkSectionProps) => {
-  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set());
+const WorkSection = ({ title, jobs }: WorkSectionProps) => {
+  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set())
 
   const toggleIndex = (i: number) => {
-    setOpenIndices(prev => {
-      const next = new Set(prev);
+    setOpenIndices((prev) => {
+      const next = new Set(prev)
       if (next.has(i)) {
-        next.delete(i);
+        next.delete(i)
       } else {
-        next.add(i);
+        next.add(i)
       }
-      return next;
-    });
-  };
+      return next
+    })
+  }
 
-  const expandAll = () => setOpenIndices(new Set(jobs.map((_, i) => i)));
-  const collapseAll = () => setOpenIndices(new Set());
+  const expandAll = () => setOpenIndices(new Set(jobs.map((_, i) => i)))
+  const collapseAll = () => setOpenIndices(new Set())
   return (
     <ResumeSection title={title}>
       <motion.section
@@ -61,7 +61,7 @@ const WorkSection = ({title, jobs}: WorkSectionProps) => {
 
         <div className="relative border-l-2 border-[var(--muted)] pl-4 space-y-6">
           {jobs.map((job, i) => {
-            const isOpen = openIndices.has(i);
+            const isOpen = openIndices.has(i)
 
             return (
               <div key={i} className="relative">
@@ -71,18 +71,24 @@ const WorkSection = ({title, jobs}: WorkSectionProps) => {
                   <div className="w-full">
                     <p className="font-semibold text-[var(--text)]">
                       {job.title}{' '}
-                      <span className="text-[var(--secondary)]">@ {job.company}</span>
+                      <span className="text-[var(--secondary)]">
+                        @ {job.company}
+                      </span>
                     </p>
-                    <p className="text-sm italic text-[var(--secondary)]">{job.range}</p>
-                    <p className="mt-1 text-[var(--secondary)]">{job.summary}</p>
+                    <p className="text-sm italic text-[var(--secondary)]">
+                      {job.range}
+                    </p>
+                    <p className="mt-1 text-[var(--secondary)]">
+                      {job.summary}
+                    </p>
                   </div>
 
                   <motion.button
                     onClick={() => toggleIndex(i)}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        toggleIndex(i);
+                        e.preventDefault()
+                        toggleIndex(i)
                       }
                     }}
                     aria-expanded={isOpen}
@@ -115,7 +121,7 @@ const WorkSection = ({title, jobs}: WorkSectionProps) => {
                   )}
                 </AnimatePresence>
               </div>
-            );
+            )
           })}
         </div>
 
