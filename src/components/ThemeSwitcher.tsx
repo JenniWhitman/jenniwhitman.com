@@ -9,6 +9,15 @@ const themes = [
   { id: 'monochrome', label: 'Mono', icon: '⚫' },
   { id: 'brutalist', label: 'Brutal', icon: '🧱' },
   { id: 'pastel', label: 'Pastel', icon: '🎨' },
+  { id: 'cyber', label: 'Cyberpunk', icon: '🤖' },
+  { id: 'handdrawn', label: 'Drawn', icon: '✏️' },
+  { id: 'natural', label: 'Natural', icon: '🌳' },
+  { id: 'hacker', label: 'Hacker', icon: '💻' },
+  { id: 'lisafrank', label: 'Lisa Frank', icon: '🦄' },
+  { id: 'windows95', label: 'Windows 95', icon: '💾' },
+  { id: 'vintage', label: 'Vintage', icon: '📜' },
+  { id: 'minimalist', label: 'Minimal', icon: '🪴' },
+  { id: 'neon', label: 'Neon', icon: '🌈' },
 ]
 
 const ThemeSwitcher = () => {

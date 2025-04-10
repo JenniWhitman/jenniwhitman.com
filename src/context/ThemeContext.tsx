@@ -14,6 +14,13 @@ type Theme =
   | 'pastel'
   | 'cyber'
   | 'handdrawn'
+  | 'natural'
+  | 'hacker'
+  | 'lisafrank'
+  | 'windows95'
+  | 'vintage'
+  | 'minimalist'
+  | 'neon'
 
 type ThemeContextType = {
   theme: Theme
