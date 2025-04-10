@@ -13,7 +13,7 @@ type Theme =
   | 'brutalist'
   | 'pastel'
   | 'cyber'
-  | 'handdrawn' // or whatever you end up with
+  | 'handdrawn'
 
 type ThemeContextType = {
   theme: Theme
@@ -23,7 +23,15 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setThemeState] = useState<Theme>('light') // fallback/default theme
+  const [theme, setThemeState] = useState<Theme>(() => {
+    const savedTheme = localStorage.getItem('theme') as Theme | null
+    if (savedTheme) return savedTheme
+
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    return prefersDark ? 'dark' : 'light'
+  })
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme | null

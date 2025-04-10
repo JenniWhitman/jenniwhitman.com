@@ -6,7 +6,6 @@ import ExperienceSection from './components/ExperienceSection'
 import EducationSection from './components/EducationSection'
 import OtherExperienceSection from './components/OtherExperienceSection'
 import ThemeSwitcher from './components/ThemeSwitcher'
-import { Download } from 'lucide-react'
 
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<
@@ -37,56 +36,35 @@ const App: React.FC = () => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <header className="flex items-center justify-between p-6 border-b border-[var(--muted)]">
-          <nav className="flex gap-4 text-sm">
-            <button
-              onClick={() => setActivePage('home')}
-              className="hover:underline"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => setActivePage('skills')}
-              className="hover:underline"
-            >
-              Skills
-            </button>
-            <button
-              onClick={() => setActivePage('experience')}
-              className="hover:underline"
-            >
-              Experience
-            </button>
-            <button
-              onClick={() => setActivePage('education')}
-              className="hover:underline"
-            >
-              Education
-            </button>
-            <button
-              onClick={() => setActivePage('otherExperience')}
-              className="hover:underline"
-            >
-              Other Experience
-            </button>
+        <header className="p-6  text-center flex flex-col items-center gap-4">
+          <h1 className="text-5xl font-[var(--font-display)]">Jenni Whitman</h1>
+          <nav className="flex flex-wrap justify-center gap-4 text-sm">
+            {[
+              'home',
+              'skills',
+              'experience',
+              'education',
+              'otherExperience',
+            ].map((page) => (
+              <button
+                key={page}
+                onClick={() => setActivePage(page as any)}
+                className={`relative pb-1 transition-colors duration-200 hover:text-[var(--primary)] ${
+                  activePage === page
+                    ? 'text-[var(--primary)] after:absolute after:left-0 after:right-0 after:-bottom-0.5 after:h-0.5 after:bg-[var(--primary)] content-[]'
+                    : 'text-[var(--secondary)]'
+                }`}
+              >
+                {page.charAt(0).toUpperCase() + page.slice(1)}
+              </button>
+            ))}
           </nav>
-          <ThemeSwitcher />
+          <div className="flex flex-col items-center gap-2 pt-2">
+            <ThemeSwitcher />
+          </div>
         </header>
 
         <main className="p-6 max-w-3xl mx-auto">
-          <div className="text-center pt-4">
-            <h1 className="text-4xl font-[var(--font-display)]">
-              Jenni Whitman
-            </h1>
-            <a
-              href="https://docs.google.com/document/d/YOUR_RESUME_ID/export?format=pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[var(--primary)] font-semibold underline hover:no-underline transition hover:scale-105 focus-visible:outline focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-            >
-              <Download size={18} /> Download Resume (PDF)
-            </a>
-          </div>
           <AnimatePresence mode="wait">
             <motion.div
               key={activePage}
