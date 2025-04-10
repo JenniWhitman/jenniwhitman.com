@@ -33,18 +33,16 @@ const WorkSection = ({title, jobs}: WorkSectionProps) => {
 
   const expandAll = () => setOpenIndices(new Set(jobs.map((_, i) => i)));
   const collapseAll = () => setOpenIndices(new Set());
-
   return (
     <ResumeSection title={title}>
       <motion.section
         className="mt-6 space-y-6"
         initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.5 }}
       >
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-semibold font-[var(--font-display)]">Work Experience</h3>
           <div className="flex items-center gap-2">
             <button
               onClick={expandAll}

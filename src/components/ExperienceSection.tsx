@@ -81,7 +81,7 @@ const jobs: Job[] = [
 
 const ExperienceSection = () => {
   return (
-    <WorkSection title={'Experience'} jobs={jobs}/>
+    <WorkSection key='experience' title={'Experience'} jobs={jobs}/>
   )
 }
 

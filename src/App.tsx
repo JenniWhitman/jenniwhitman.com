@@ -23,11 +23,11 @@ const App: React.FC = () => {
   }, [darkMode]);
 
   const pageComponents: Record<typeof activePage, React.ReactElement | null> = {
-    home: <HomeSection />,
-    skills: <SkillsSection />,
-    experience: <ExperienceSection />,
-    education: <EducationSection />,
-    otherExperience: <OtherExperienceSection />,
+    home: <HomeSection key='home' />,
+    skills: <SkillsSection key='skills' />,
+    experience: <ExperienceSection key='experience' />,
+    education: <EducationSection key='education' />,
+    otherExperience: <OtherExperienceSection key='otherExperience' />,
     resume: null,
   };
 
