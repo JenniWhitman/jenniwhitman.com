@@ -124,17 +124,6 @@ const WorkSection = ({ title, jobs }: WorkSectionProps) => {
             )
           })}
         </div>
-
-        <div className="text-center pt-4">
-          <a
-            href="https://docs.google.com/document/d/YOUR_RESUME_ID/export?format=pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[var(--primary)] font-semibold underline hover:no-underline transition hover:scale-105 focus-visible:outline focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
-          >
-            <Download size={18} /> Download Resume (PDF)
-          </a>
-        </div>
       </motion.section>
     </ResumeSection>
   )

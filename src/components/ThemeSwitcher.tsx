@@ -19,16 +19,17 @@ const ThemeSwitcher = () => {
     <div className="relative">
       <motion.button
         onClick={() => setOpen(!open)}
-        whileHover={{ rotate: [0, -10, 10, -5, 5, 0], scale: 1.1 }}
-        whileTap={{ scale: 0.9, rotate: 0 }}
-        animate={{ rotate: 0 }} // resets rotation
-        transition={{ type: 'spring', stiffness: 500, damping: 20 }}
+        whileHover={{
+          rotate: [-10, 10, -5, 5, 0],
+          scale: 1.1,
+          transition: { duration: 0.5, ease: 'easeInOut' },
+        }}
+        whileTap={{ scale: 0.9 }}
         className="p-2 rounded focus-visible:outline focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
         aria-label="Toggle theme menu"
       >
         <Palette className="w-5 h-5 text-[var(--primary)] transition-colors duration-300" />
       </motion.button>
-
       <AnimatePresence>
         {open && (
           <motion.div

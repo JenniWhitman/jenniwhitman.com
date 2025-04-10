@@ -6,6 +6,7 @@ import ExperienceSection from './components/ExperienceSection'
 import EducationSection from './components/EducationSection'
 import OtherExperienceSection from './components/OtherExperienceSection'
 import ThemeSwitcher from './components/ThemeSwitcher'
+import { Download } from 'lucide-react'
 
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<
@@ -37,7 +38,6 @@ const App: React.FC = () => {
         exit={{ opacity: 0 }}
       >
         <header className="flex items-center justify-between p-6 border-b border-[var(--muted)]">
-          <h1 className="text-2xl font-[var(--font-display)]">Jenni Whitman</h1>
           <nav className="flex gap-4 text-sm">
             <button
               onClick={() => setActivePage('home')}
@@ -74,6 +74,19 @@ const App: React.FC = () => {
         </header>
 
         <main className="p-6 max-w-3xl mx-auto">
+          <div className="text-center pt-4">
+            <h1 className="text-4xl font-[var(--font-display)]">
+              Jenni Whitman
+            </h1>
+            <a
+              href="https://docs.google.com/document/d/YOUR_RESUME_ID/export?format=pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-[var(--primary)] font-semibold underline hover:no-underline transition hover:scale-105 focus-visible:outline focus-visible:ring-2 focus-visible:ring-[var(--accent)]"
+            >
+              <Download size={18} /> Download Resume (PDF)
+            </a>
+          </div>
           <AnimatePresence mode="wait">
             <motion.div
               key={activePage}
