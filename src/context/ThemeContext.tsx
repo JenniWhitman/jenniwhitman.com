@@ -4,23 +4,23 @@ import {
   useEffect,
   useState,
   ReactNode,
-} from "react"
+} from 'react'
 
 type Theme =
-  | "light"
-  | "dark"
-  | "monochrome"
-  | "brutalist"
-  | "pastel"
-  | "cyber"
-  | "handdrawn"
-  | "natural"
-  | "hacker"
-  | "lisafrank"
-  | "windows95"
-  | "vintage"
-  | "minimalist"
-  | "neon"
+  | 'light'
+  | 'dark'
+  | 'monochrome'
+  | 'brutalist'
+  | 'pastel'
+  | 'cyber'
+  | 'handdrawn'
+  | 'natural'
+  | 'hacker'
+  | 'lisafrank'
+  | 'windows95'
+  | 'vintage'
+  | 'minimalist'
+  | 'neon'
 
 type ThemeContextType = {
   theme: Theme
@@ -31,23 +31,23 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setThemeState] = useState<Theme>(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme | null
+    const savedTheme = localStorage.getItem('theme') as Theme | null
     if (savedTheme) return savedTheme
 
     const prefersDark =
       window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    return prefersDark ? "dark" : "light"
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    return prefersDark ? 'dark' : 'light'
   })
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as Theme | null
+    const savedTheme = localStorage.getItem('theme') as Theme | null
     if (savedTheme) setThemeState(savedTheme)
   }, [])
 
   useEffect(() => {
-    document.documentElement.setAttribute("class", theme)
-    localStorage.setItem("theme", theme)
+    document.documentElement.setAttribute('class', theme)
+    localStorage.setItem('theme', theme)
   }, [theme])
 
   const setTheme = (newTheme: Theme) => {
@@ -63,6 +63,6 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
 export const useTheme = () => {
   const context = useContext(ThemeContext)
-  if (!context) throw new Error("useTheme must be used within a ThemeProvider")
+  if (!context) throw new Error('useTheme must be used within a ThemeProvider')
   return context
 }

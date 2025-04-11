@@ -1,4 +1,4 @@
-import ResumeSection from "./ResumeSection"
+import ResumeSection from './ResumeSection'
 
 const HomeSection = () => {
   return (

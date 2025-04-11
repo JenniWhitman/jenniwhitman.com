@@ -1,5 +1,5 @@
-import React from "react"
-import ResumeSection from "./ResumeSection"
+import React from 'react'
+import ResumeSection from './ResumeSection'
 
 interface EducationProps {
   title: string
@@ -37,7 +37,7 @@ const EducationList: React.FC<EducationProps> = ({ title, children }) => {
           children,
           (child: React.ReactElement<EducationListItemProps>) => (
             <EducationListItem {...child.props} />
-          ),
+          )
         )}
       </ul>
     </ResumeSection>
@@ -46,11 +46,11 @@ const EducationList: React.FC<EducationProps> = ({ title, children }) => {
 
 const EducationSection = () => {
   return (
-    <EducationList title={"Education"}>
+    <EducationList title={'Education'}>
       <EducationListItem
-        duration={"2016"}
-        degree={"Bachelors cum laude, Computer Science"}
-        institution={"Harvard University Extension School"}
+        duration={'2016'}
+        degree={'Bachelors cum laude, Computer Science'}
+        institution={'Harvard University Extension School'}
       />
     </EducationList>
   )
