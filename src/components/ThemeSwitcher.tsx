@@ -1,23 +1,23 @@
-import { useTheme } from '../context/ThemeContext'
-import { Palette } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useRef, useEffect } from 'react'
+import { useTheme } from "../context/ThemeContext"
+import { Palette } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { useState, useRef, useEffect } from "react"
 
 const themes = [
-  { id: 'light', label: 'Light', icon: '🌞' },
-  { id: 'dark', label: 'Dark', icon: '🌚' },
-  { id: 'monochrome', label: 'Mono', icon: '⚫' },
-  { id: 'brutalist', label: 'Brutal', icon: '🧱' },
-  { id: 'pastel', label: 'Pastel', icon: '🎨' },
-  { id: 'cyber', label: 'Cyberpunk', icon: '🤖' },
-  { id: 'handdrawn', label: 'Drawn', icon: '✏️' },
-  { id: 'natural', label: 'Natural', icon: '🌳' },
-  { id: 'hacker', label: 'Hacker', icon: '💻' },
-  { id: 'lisafrank', label: 'Lisa Frank', icon: '🦄' },
-  { id: 'windows95', label: 'Win95', icon: '💾' },
-  { id: 'vintage', label: 'Vintage', icon: '📜' },
-  { id: 'minimalist', label: 'Minimal', icon: '🪴' },
-  { id: 'neon', label: 'Neon', icon: '🌈' },
+  { id: "light", label: "Light", icon: "🌞" },
+  { id: "dark", label: "Dark", icon: "🌚" },
+  { id: "monochrome", label: "Mono", icon: "⚫" },
+  { id: "brutalist", label: "Brutal", icon: "🧱" },
+  { id: "pastel", label: "Pastel", icon: "🎨" },
+  { id: "cyber", label: "Cyberpunk", icon: "🤖" },
+  { id: "handdrawn", label: "Drawn", icon: "✏️" },
+  { id: "natural", label: "Natural", icon: "🌳" },
+  { id: "hacker", label: "Hacker", icon: "💻" },
+  { id: "lisafrank", label: "Lisa Frank", icon: "🦄" },
+  { id: "windows95", label: "Win95", icon: "💾" },
+  { id: "vintage", label: "Vintage", icon: "📜" },
+  { id: "minimalist", label: "Minimal", icon: "🪴" },
+  { id: "neon", label: "Neon", icon: "🌈" },
 ]
 
 const ThemeSwitcher = () => {
@@ -66,23 +66,23 @@ const ThemeSwitcher = () => {
                   setOpen(false)
                 }}
                 onKeyDown={(e) => {
-                  if (e.key === 'ArrowDown') {
+                  if (e.key === "ArrowDown") {
                     e.preventDefault()
                     buttonRefs.current[(index + 1) % themes.length]?.focus()
-                  } else if (e.key === 'ArrowUp') {
+                  } else if (e.key === "ArrowUp") {
                     e.preventDefault()
                     buttonRefs.current[
                       (index - 1 + themes.length) % themes.length
                     ]?.focus()
-                  } else if (e.key === 'Escape') {
+                  } else if (e.key === "Escape") {
                     setOpen(false)
                   }
                 }}
                 role="menuitem"
                 className={`group flex items-center gap-2 px-2 py-1 rounded hover:bg-[var(--muted)] hover:text-[var(--primary)] transition-colors duration-200 text-sm w-full ${
                   t.id === theme
-                    ? 'text-[var(--primary)]'
-                    : 'text-[var(--secondary)]'
+                    ? "text-[var(--primary)]"
+                    : "text-[var(--secondary)]"
                 }`}
               >
                 <span className="transition-transform duration-200 group-hover:scale-110">

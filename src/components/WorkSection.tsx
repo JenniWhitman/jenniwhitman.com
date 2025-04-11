@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown, Download } from 'lucide-react'
-import ResumeSection from './ResumeSection'
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { ChevronDown } from "lucide-react"
+import ResumeSection from "./ResumeSection"
 
 export type Job = {
   title: string
@@ -70,7 +70,7 @@ const WorkSection = ({ title, jobs }: WorkSectionProps) => {
                 <div className="flex w-full items-start justify-between text-left p-2 rounded transition">
                   <div className="w-full">
                     <p className="font-semibold text-[var(--text)]">
-                      {job.title}{' '}
+                      {job.title}{" "}
                       <span className="text-[var(--secondary)]">
                         @ {job.company}
                       </span>
@@ -86,7 +86,7 @@ const WorkSection = ({ title, jobs }: WorkSectionProps) => {
                   <motion.button
                     onClick={() => toggleIndex(i)}
                     onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
+                      if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault()
                         toggleIndex(i)
                       }
@@ -95,7 +95,7 @@ const WorkSection = ({ title, jobs }: WorkSectionProps) => {
                     aria-controls={`job-details-${i}`}
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     whileHover={{ scale: 1.1 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
+                    transition={{ type: "spring", stiffness: 300 }}
                     className="ml-2 mt-1 text-[var(--secondary)] flex-shrink-0 p-1 focus-visible:outline focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded"
                   >
                     <ChevronDown size={18} />
