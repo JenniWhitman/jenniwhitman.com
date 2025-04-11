@@ -89,7 +89,9 @@ const jobs: Job[] = [
 ]
 
 const ExperienceSection = () => {
-  return <WorkSection key="experience" title={'Experience'} jobs={jobs} />
+  return (
+    <WorkSection key="experience" title={'Relevant Experience'} jobs={jobs} />
+  )
 }
 
 export default ExperienceSection
