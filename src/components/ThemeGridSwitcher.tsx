@@ -90,7 +90,7 @@ const ThemeGridSwitcher = () => {
   }, [theme, themes])
 
   return (
-    <div className="relative w-full overflow-x-auto">
+    <div className="relative w-full overflow-x-auto overflow-y-hidden">
       <div ref={containerRef} className="flex gap-2 px-4 py-2 min-w-max">
         {themes.map((t) => (
           <motion.button
