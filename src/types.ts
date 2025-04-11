@@ -5,7 +5,7 @@ export type Page =
   | 'skills'
   | 'experience'
   | 'other'
-  | 'section1'
+  | 'music'
   | 'section2'
   | 'section3'
 
@@ -23,7 +23,7 @@ export const pages: PageConfig[] = [
   { pageName: 'skills', isSubPage: true, parent: 'resume' },
   { pageName: 'experience', isSubPage: true, parent: 'resume' },
   { pageName: 'other', isSubPage: true, parent: 'resume' },
-  { pageName: 'section1', isSubPage: false, parent: null },
+  { pageName: 'music', isSubPage: false, parent: null },
   { pageName: 'section2', isSubPage: false, parent: null },
   { pageName: 'section3', isSubPage: false, parent: null },
 ]
