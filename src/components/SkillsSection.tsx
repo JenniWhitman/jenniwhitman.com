@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import ResumeSection from './ResumeSection'
+import { ChartBarBig, Dot } from 'lucide-react'
 
 interface SkillsProps {
   title: string
@@ -107,7 +108,6 @@ const SkillsList: React.FC<SkillsProps> = ({ title, children }) => {
         </li>
       )
     }
-
     return <SkillsItem key={title} {...child.props} />
   }
   return (
@@ -117,13 +117,17 @@ const SkillsList: React.FC<SkillsProps> = ({ title, children }) => {
           onClick={() => setLayout('bars')}
           className={`text-xs px-2 py-1 rounded flex items-center gap-1 ${layout === 'bars' ? 'bg-[var(--primary)] text-[var(--background)]' : 'bg-[var(--muted)] text-[var(--text)]'}`}
         >
-          <span>▮</span> Bars
+          <ChartBarBig
+            className="w-5 h-5"
+            style={{ color: 'var(--primary)' }}
+          />{' '}
+          Bars
         </button>
         <button
           onClick={() => setLayout('dots')}
           className={`text-xs px-2 py-1 rounded flex items-center gap-1 ${layout === 'dots' ? 'bg-[var(--primary)] text-[var(--background)]' : 'bg-[var(--muted)] text-[var(--text)]'}`}
         >
-          <span>•</span> Dots
+          <Dot className="w-5 h-5" style={{ color: 'var(--primary)' }} /> Dots
         </button>
       </div>
       <div className="overflow-hidden relative">
@@ -145,30 +149,30 @@ const SkillsList: React.FC<SkillsProps> = ({ title, children }) => {
 const SkillsSection = () => {
   return (
     <SkillsList title="Skills">
-      <SkillsItem title="Python" proficiencyLevel={3} />
-      <SkillsItem title="Django" proficiencyLevel={3} />
-      <SkillsItem title="React" proficiencyLevel={3} />
-      <SkillsItem title="TypeScript" proficiencyLevel={3} />
-      <SkillsItem title="JavaScript" proficiencyLevel={3} />
-      <SkillsItem title="SQL" proficiencyLevel={3} />
-      <SkillsItem title="MySQL" proficiencyLevel={3} />
-      <SkillsItem title="PHP" proficiencyLevel={3} />
-      <SkillsItem title="Laravel" proficiencyLevel={3} />
-      <SkillsItem title="PostgreSQL" proficiencyLevel={3} />
-      <SkillsItem title="OpenAPI" proficiencyLevel={3} />
-      <SkillsItem title="HTML" proficiencyLevel={3} />
-      <SkillsItem title="CSS" proficiencyLevel={3} />
-      <SkillsItem title="SASS/LESS" proficiencyLevel={2} />
-      <SkillsItem title="GraphQL" proficiencyLevel={2} />
-      <SkillsItem title="WCAG" proficiencyLevel={2} />
-      <SkillsItem title="Angular" proficiencyLevel={2} />
-      <SkillsItem title="Java" proficiencyLevel={2} />
-      <SkillsItem title="C" proficiencyLevel={1} />
-      <SkillsItem title="Google App Engine" proficiencyLevel={1} />
-      <SkillsItem title="AWS" proficiencyLevel={1} />
-      <SkillsItem title="Docker" proficiencyLevel={1} />
-      <SkillsItem title="Kubernetes" proficiencyLevel={1} />
-      <SkillsItem title="Cloudflare" proficiencyLevel={1} />
+      <SkillsItem title="Python" proficiencyLevel={10} />
+      <SkillsItem title="Django" proficiencyLevel={10} />
+      <SkillsItem title="React" proficiencyLevel={10} />
+      <SkillsItem title="TypeScript" proficiencyLevel={10} />
+      <SkillsItem title="JavaScript" proficiencyLevel={10} />
+      <SkillsItem title="SQL" proficiencyLevel={9} />
+      <SkillsItem title="MySQL" proficiencyLevel={9} />
+      <SkillsItem title="PostgreSQL" proficiencyLevel={9} />
+      <SkillsItem title="PHP" proficiencyLevel={8} />
+      <SkillsItem title="Laravel" proficiencyLevel={8} />
+      <SkillsItem title="OpenAPI" proficiencyLevel={8} />
+      <SkillsItem title="HTML" proficiencyLevel={7} />
+      <SkillsItem title="CSS" proficiencyLevel={7} />
+      <SkillsItem title="SASS/LESS" proficiencyLevel={6} />
+      <SkillsItem title="WCAG" proficiencyLevel={6} />
+      <SkillsItem title="GraphQL" proficiencyLevel={5} />
+      <SkillsItem title="Angular" proficiencyLevel={5} />
+      <SkillsItem title="AWS" proficiencyLevel={5} />
+      <SkillsItem title="Docker" proficiencyLevel={5} />
+      <SkillsItem title="Google App Engine" proficiencyLevel={4} />
+      <SkillsItem title="Java" proficiencyLevel={4} />
+      <SkillsItem title="Kubernetes" proficiencyLevel={4} />
+      <SkillsItem title="C" proficiencyLevel={3} />
+      <SkillsItem title="Cloudflare" proficiencyLevel={3} />
       <SkillsItem title="GHA" proficiencyLevel={2} />
     </SkillsList>
   )

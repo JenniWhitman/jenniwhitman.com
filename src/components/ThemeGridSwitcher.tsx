@@ -1,51 +1,84 @@
 import { useTheme } from '../context/ThemeContext'
 import { motion } from 'framer-motion'
-import { useState, useMemo, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   Sun,
   Moon,
-  Circle,
+  Dot,
   Terminal,
   Palette,
-  Monitor,
-  Cloud,
+  Skull,
+  PencilLine,
   Flower2,
-  Bug,
-  Sparkles,
+  BrickWall,
+  Icon,
   MonitorSmartphone,
   Radio,
-  Square,
+  Sparkles,
   Zap,
 } from 'lucide-react'
+import {
+  butterfly,
+  featherText,
+  floppyDisk2,
+  treesForest,
+  unicornHead,
+} from '@lucide/lab'
 
 const themes = [
-  { id: 'light', label: 'Light', icon: Sun },
-  { id: 'dark', label: 'Dark', icon: Moon },
-  { id: 'monochrome', label: 'Mono', icon: Circle },
-  { id: 'brutalist', label: 'Brutal', icon: Terminal },
-  { id: 'pastel', label: 'Pastel', icon: Palette },
-  { id: 'cyber', label: 'Cyber', icon: Monitor },
-  { id: 'handdrawn', label: 'Hand', icon: Cloud },
-  { id: 'natural', label: 'Nature', icon: Flower2 },
-  { id: 'hacker', label: 'Hacker', icon: Bug },
-  { id: 'lisafrank', label: 'Lisa', icon: Sparkles },
-  { id: 'windows95', label: 'Win95', icon: MonitorSmartphone },
-  { id: 'vintage', label: 'Vintage', icon: Radio },
-  { id: 'minimalist', label: 'Min', icon: Square },
-  { id: 'neon', label: 'Neon', icon: Zap },
+  { id: 'light', label: 'Light', icon: Sun, lab: false },
+  { id: 'dark', label: 'Dark', icon: Moon, lab: false },
+  { id: 'monochrome', label: 'Mono', icon: Palette, lab: false },
+  { id: 'brutalist', label: 'Brutal', icon: BrickWall, lab: false },
+  {
+    id: 'pastel',
+    label: 'Pastel',
+    icon: Palette,
+    lab: true,
+    iconNode: butterfly,
+  },
+  { id: 'cyber', label: 'Cyber', icon: Skull, lab: false },
+  { id: 'handdrawn', label: 'Hand', icon: PencilLine, lab: false },
+  {
+    id: 'natural',
+    label: 'Nature',
+    icon: Flower2,
+    lab: true,
+    iconNode: treesForest,
+  },
+  { id: 'hacker', label: 'Hacker', icon: Terminal, lab: false },
+  {
+    id: 'lisafrank',
+    label: 'Lisa Frank',
+    icon: Sparkles,
+    lab: true,
+    iconNode: unicornHead,
+  },
+  {
+    id: 'windows95',
+    label: 'Win95',
+    icon: MonitorSmartphone,
+    lab: true,
+    iconNode: floppyDisk2,
+  },
+  {
+    id: 'vintage',
+    label: 'Vintage',
+    icon: Radio,
+    lab: true,
+    iconNode: featherText,
+  },
+  { id: 'minimalist', label: 'Min', icon: Dot, lab: false },
+  { id: 'neon', label: 'Neon', icon: Zap, lab: false },
 ]
 
 const ThemeGridSwitcher = () => {
   const { theme, setTheme } = useTheme()
-  const shuffledThemes = useMemo(
-    () => [...themes].sort(() => Math.random() - 0.5),
-    []
-  )
   const [hovered, setHovered] = useState<string | null>(null)
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const activeIndex = shuffledThemes.findIndex((t) => t.id === theme)
+    const activeIndex = themes.findIndex((t) => t.id === theme)
     const container = containerRef.current
     const button = container?.children[activeIndex] as HTMLElement | undefined
 
@@ -54,12 +87,12 @@ const ThemeGridSwitcher = () => {
         button.offsetLeft - container.offsetWidth / 2 + button.offsetWidth / 2
       container.scrollTo({ left: offset, behavior: 'smooth' })
     }
-  }, [theme, shuffledThemes])
+  }, [theme, themes])
 
   return (
     <div className="relative w-full overflow-x-auto">
       <div ref={containerRef} className="flex gap-2 px-4 py-2 min-w-max">
-        {shuffledThemes.map((t) => (
+        {themes.map((t) => (
           <motion.button
             key={t.id}
             onClick={() => setTheme(t.id as any)}
@@ -70,7 +103,15 @@ const ThemeGridSwitcher = () => {
             className={`relative w-8 h-8 flex items-center justify-center p-1 rounded transition ${t.id === theme ? 'bg-[var(--muted)]' : ''}`}
             aria-label={`Switch to ${t.label} theme`}
           >
-            <t.icon className="w-5 h-5" style={{ color: 'var(--primary)' }} />
+            {t.lab && t.iconNode ? (
+              <Icon
+                iconNode={t.iconNode}
+                className="w-5 h-5"
+                style={{ color: 'var(--primary)' }}
+              />
+            ) : (
+              <t.icon className="w-5 h-5" style={{ color: 'var(--primary)' }} />
+            )}
           </motion.button>
         ))}
       </div>

@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+/src/components/*.js
+/src/*.js
+/eslint.config.js
+/src/context/*.js
+/tsconfig.tsbuildinfo
+
