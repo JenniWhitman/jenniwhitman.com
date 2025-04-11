@@ -33,6 +33,7 @@ const WorkSection = ({ title, jobs }: WorkSectionProps) => {
 
   const expandAll = () => setOpenIndices(new Set(jobs.map((_, i) => i)))
   const collapseAll = () => setOpenIndices(new Set())
+
   return (
     <ResumeSection title={title}>
       <motion.section
@@ -62,6 +63,7 @@ const WorkSection = ({ title, jobs }: WorkSectionProps) => {
         <div className="relative border-l-2 border-[var(--muted)] pl-4 space-y-6">
           {jobs.map((job, i) => {
             const isOpen = openIndices.has(i)
+            const hasDetails = job.details.length > 0
 
             return (
               <div key={i} className="relative">
@@ -69,48 +71,56 @@ const WorkSection = ({ title, jobs }: WorkSectionProps) => {
 
                 <div className="flex w-full items-start justify-between text-left p-2 rounded transition">
                   <div className="w-full">
-                    <p className="font-semibold text-[var(--text)]">
+                    <h3 className="font-display font-semibold text-[var(--primary)]">
                       {job.title}{' '}
-                      <span className="text-[var(--secondary)]">
+                      <span className="text-[var(--secondary)] font-body">
                         @ {job.company}
                       </span>
-                    </p>
-                    <p className="text-sm italic text-[var(--secondary)]">
+                    </h3>
+                    <p className="font-body text-sm italic text-[var(--secondary)]">
                       {job.range}
                     </p>
-                    <p className="mt-1 text-[var(--secondary)]">
-                      {job.summary}
-                    </p>
+                    {job.summary ? (
+                      <p className="mt-1 font-body text-[var(--text)] text-sm">
+                        {job.summary}
+                      </p>
+                    ) : (
+                      <p className="mt-1 font-body text-[var(--secondary)] text-sm italic">
+                        No additional details provided.
+                      </p>
+                    )}
                   </div>
 
-                  <motion.button
-                    onClick={() => toggleIndex(i)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault()
-                        toggleIndex(i)
-                      }
-                    }}
-                    aria-expanded={isOpen}
-                    aria-controls={`job-details-${i}`}
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    whileHover={{ scale: 1.1 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                    className="ml-2 mt-1 text-[var(--secondary)] flex-shrink-0 p-1 focus-visible:outline focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded"
-                  >
-                    <ChevronDown size={18} />
-                  </motion.button>
+                  {hasDetails && (
+                    <motion.button
+                      onClick={() => toggleIndex(i)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault()
+                          toggleIndex(i)
+                        }
+                      }}
+                      aria-expanded={isOpen}
+                      aria-controls={`job-details-${i}`}
+                      animate={{ rotate: isOpen ? 180 : 0 }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      className="ml-2 mt-1 text-[var(--secondary)] flex-shrink-0 p-1 focus-visible:outline focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded"
+                    >
+                      <ChevronDown size={18} />
+                    </motion.button>
+                  )}
                 </div>
 
                 <AnimatePresence initial={false}>
-                  {isOpen && (
+                  {isOpen && hasDetails && (
                     <motion.div
                       id={`job-details-${i}`}
                       initial={{ opacity: 0, y: -4 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -4 }}
                       transition={{ duration: 0.25 }}
-                      className="ml-2 mt-2 text-sm text-[var(--secondary)] font-[var(--font-body)]"
+                      className="ml-2 mt-2 font-body text-sm text-[var(--secondary)]"
                     >
                       <ul className="list-disc list-inside space-y-1">
                         {job.details.map((item, j) => (
