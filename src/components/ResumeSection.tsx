@@ -8,7 +8,7 @@ interface ResumeSectionProps {
 const ResumeSection: React.FC<ResumeSectionProps> = ({ title, children }) => {
   return (
     <section>
-      {title ? <h2 className="text-xl mb-2 font-display">{title}</h2> : null}
+      {title ? <h2 className="sr-only">{title}</h2> : null}
       {children}
     </section>
   )
