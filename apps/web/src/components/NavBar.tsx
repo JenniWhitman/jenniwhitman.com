@@ -1,7 +1,7 @@
 import React from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronUp } from 'lucide-react'
-import { Page, pages, PageConfig } from '../types'
+import { Page, pages, PageConfig } from '@/types'
 
 interface NavBarProps {
   activePage: Page

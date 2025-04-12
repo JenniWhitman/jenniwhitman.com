@@ -8,6 +8,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["apps/web/src/*"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "eslint.config.ts"]
+  "exclude": ["node_modules"],
+  "include": ["eslint.config.ts"]
 }

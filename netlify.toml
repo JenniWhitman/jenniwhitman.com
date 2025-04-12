@@ -1,0 +1,9 @@
+[build]
+base = "apps/web"
+publish = "apps/web/dist"
+command = "npm run build"
+
+[dev]
+command = "npm run dev"
+targetPort = 5173
+autoLaunch = true
