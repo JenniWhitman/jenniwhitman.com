@@ -6,8 +6,6 @@ export type Page =
   | 'experience'
   | 'other'
   | 'music'
-  | 'section2'
-  | 'section3'
 
 export interface PageConfig {
   pageName: Page

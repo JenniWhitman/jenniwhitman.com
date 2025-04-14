@@ -20,9 +20,7 @@ const App: React.FC = () => {
     education: <EducationSection key="education" />,
     other: <OtherExperienceSection key="otherExperience" />,
     resume: <HomeSection key="summary" />,
-    music: <div key="section1">Section 1 content coming soon</div>,
-    section2: <div key="section2">Section 2 content coming soon</div>,
-    section3: <div key="section3">Section 3 content coming soon</div>,
+    music: <div key="music">Working on something fun for here - check back soon!</div>,
   }
 
   const activeComponent = pageComponents[activePage] || null

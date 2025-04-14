@@ -8,6 +8,4 @@ export const pages: PageConfig[] = [
   { pageName: 'experience', isSubPage: true, parent: 'resume' },
   { pageName: 'other', isSubPage: true, parent: 'resume' },
   { pageName: 'music', isSubPage: false, parent: null },
-  { pageName: 'section2', isSubPage: false, parent: null },
-  { pageName: 'section3', isSubPage: false, parent: null },
 ]
