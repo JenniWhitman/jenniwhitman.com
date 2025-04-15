@@ -10,6 +10,7 @@ import ThemeGridSwitcher from './components/ThemeGridSwitcher'
 import { SiGithub } from '@icons-pack/react-simple-icons'
 import NavBar from './components/NavBar'
 import { Page } from './types'
+import {Toaster} from 'sonner'
 
 const App: React.FC = () => {
   const [activePage, setActivePage] = useState<Page>('summary')
@@ -76,6 +77,7 @@ const App: React.FC = () => {
           </a>
         </footer>
       </motion.div>
+      <Toaster richColors position="bottom-center" />
     </StrictMode>
   )
 }
