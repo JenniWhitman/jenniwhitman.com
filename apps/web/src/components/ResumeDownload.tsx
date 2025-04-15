@@ -1,61 +1,45 @@
-import { Download } from 'lucide-react'
-import { useState } from 'react'
-import { toast } from 'sonner'
+import { Download } from 'lucide-react';
+import { useState } from 'react';
+import { toast } from 'sonner';
 
 const formats = [
   { label: 'PDF', value: 'pdf' },
   { label: 'DOCX', value: 'docx' },
   { label: 'TXT', value: 'txt' },
-]
+];
 
 const ResumeDownload = () => {
-  const [selectedFormat, setSelectedFormat] = useState('pdf')
+  const [selectedFormat, setSelectedFormat] = useState('pdf');
 
   const baseUrl =
-    'https://docs.google.com/document/d/13X4IaKD3RYtDqw5pNllHKuAZMvxzOSIKIYiBcnXpQTU/export'
+    'https://docs.google.com/document/d/13X4IaKD3RYtDqw5pNllHKuAZMvxzOSIKIYiBcnXpQTU/export';
+
+  const downloadFile = async (format: string) => {
+    const res = await fetch(`${baseUrl}?format=${format}`);
+    if (!res.ok) throw new Error('Download failed.');
+
+    const blob = await res.blob();
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `jenni-whitman-resume.${format}`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    window.URL.revokeObjectURL(url);
+  };
 
   const handleDownload = async () => {
-    toast.success(`Downloading as ${selectedFormat.toUpperCase()}...`)
+    toast.success(`Downloading as ${selectedFormat.toUpperCase()}...`);
 
     try {
-      if (selectedFormat === 'pdf') {
-        const res = await fetch(`${baseUrl}?format=${selectedFormat}`)
-        if (!res.ok) throw new Error('Download failed.')
-
-        const blob = await res.blob()
-        const url = window.URL.createObjectURL(blob)
-
-        const a = document.createElement('a')
-        a.href = url
-        a.download = `jenni-whitman-resume.${selectedFormat}`
-        document.body.appendChild(a)
-        a.click()
-        a.remove()
-
-        window.URL.revokeObjectURL(url)
-        return
-      }
-
-      const res = await fetch(`${baseUrl}?format=${selectedFormat}`)
-      if (!res.ok) throw new Error('Download failed.')
-
-      const blob = await res.blob()
-      const url = window.URL.createObjectURL(blob)
-
-      const a = document.createElement('a')
-      a.href = url
-      a.download = `jenni-whitman-resume.${selectedFormat}`
-      document.body.appendChild(a)
-      a.click()
-      a.remove()
-
-      window.URL.revokeObjectURL(url)
+      await downloadFile(selectedFormat);
     } catch (err) {
-      toast.error('Download failed. Google overlords hath said no.')
+      toast.error('Download failed. Google overlords hath said no.');
     }
-  }
-
-
+  };
 
   return (
     <div className="text-center pt-4">
@@ -87,7 +71,7 @@ const ResumeDownload = () => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ResumeDownload
+export default ResumeDownload;
